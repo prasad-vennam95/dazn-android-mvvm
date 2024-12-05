@@ -1,4 +1,5 @@
 package com.dazn.mvvm.app.android
 
-class DaznApplication {
-}
+import android.app.Application
+
+class DaznApplication : Application()
