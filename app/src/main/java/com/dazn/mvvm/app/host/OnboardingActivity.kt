@@ -1,4 +1,0 @@
-package com.dazn.mvvm.app.host
-
-class OnboardingActivity {
-}

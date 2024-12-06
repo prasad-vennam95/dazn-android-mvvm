@@ -1,47 +1,51 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.dazn.mvvm.app.host
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import android.os.PersistableBundle
+import androidx.activity.viewModels
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.dazn.mvvm.presentation.theme.AppTheme
+import androidx.lifecycle.lifecycleScope
+import com.dazn.mvvm.app.android.base.BaseActivity
+import com.dazn.mvvm.presentation.ui.screen.MainScreen
+import com.dazn.mvvm.presentation.ui.viemodel.MainNavigationEvent
+import com.dazn.mvvm.presentation.ui.viemodel.MainViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            AppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+class MainActivity : BaseActivity() {
+    private val mainViewModel: MainViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        lifecycleScope.launch {
+            mainViewModel.eventFlow.collectLatest { event ->
+                when (event) {
+                    is MainNavigationEvent.NavigateToDetails -> navigateToDetails()
+                    is MainNavigationEvent.ShowErrorDialog -> showErrorDialog()
+                    else -> Unit
                 }
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    private fun navigateToDetails() {
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AppTheme {
-        Greeting("Android")
+    }
+
+    private fun showErrorDialog() {
+
+    }
+
+    @Composable
+    override fun Content() {
+        mainViewModel.loadContent()
+        MainScreen(mainViewModel)
+    }
+
+    companion object {
+        const val TAG = "MainActivity"
     }
 }
