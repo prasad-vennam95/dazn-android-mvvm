@@ -35,6 +35,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Dazn MVVM"
+rootProject.name = "Dazn Clean MVVM"
 include(":app")
  

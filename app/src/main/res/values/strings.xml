@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Dazn MVVM</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="empty" />
+    <string name="background_image" />
+    <string name="leagues_logo" />
+    <string name="back_button" />
 </resources>

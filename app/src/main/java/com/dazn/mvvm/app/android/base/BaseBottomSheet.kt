@@ -11,7 +11,9 @@ import com.dazn.mvvm.presentation.theme.AppTheme
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 abstract class BaseBottomSheet : BottomSheetDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -31,7 +33,7 @@ abstract class BaseBottomSheet : BottomSheetDialogFragment() {
         inflater: android.view.LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): android.view.View? {
+    ): View? {
         return ComposeView(requireContext()).apply {
             setContent {
                 AppTheme {

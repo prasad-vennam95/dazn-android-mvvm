@@ -3,7 +3,6 @@ package com.dazn.mvvm.app.android.base
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
@@ -11,7 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dazn.mvvm.presentation.theme.AppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 abstract class BaseFragment : Fragment() {
 
     private var onPermissionResult: ((Boolean) -> Unit)? = null
