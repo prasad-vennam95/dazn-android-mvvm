@@ -11,7 +11,7 @@ data class OnboardingPage(
     val ctaText: String? = null,
     val ctaColor: Color? = null,
     val ctaTextColor: Color? = null,
-    val videoConfig: VideoConfig? = null
+    val videoConfig:  VideoConfig? = null
 )
 
 data class VideoConfig(

@@ -1,6 +1,6 @@
 package com.dazn.mvvm.presentation.ui.screen
 
-import androidx.compose.material.Icon
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithCache
